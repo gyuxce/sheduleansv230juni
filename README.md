@@ -14,6 +14,10 @@ npm install
 npm run dev
 ```
 
+Nama key yang direkomendasikan adalah `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`.
+Untuk kompatibilitas dengan project Supabase lama, aplikasi juga menerima
+`NEXT_PUBLIC_SUPABASE_ANON_KEY`.
+
 ## Pemeriksaan kualitas
 
 ```bash
