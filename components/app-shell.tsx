@@ -9,7 +9,7 @@ const navigation: Record<Role, { label: string; path: string; requiresSelfBook?:
     { label: "Kalender", path: "calendar" },
     { label: "Approval Booking", path: "bookings" },
     { label: "Sensei", path: "senseis" },
-    { label: "Murid", path: "students" },
+    { label: "Murid Saya", path: "students" },
     { label: "Activity Log", path: "activity" },
   ],
   sensei: [

@@ -83,6 +83,15 @@ h1 { margin: 0 0 10px; font-size: 30px; line-height: 1.2; }
 .member-row:last-child { border-bottom: 0; }
 .member-row p { margin: 5px 0 0; }
 .status-pill { padding: 5px 9px; border-radius: 999px; background: #ecfdf5; color: #166534; font-size: 12px; font-weight: 700; }
+.student-list { display: grid; gap: 14px; }
+.student-card { display: flex; align-items: center; gap: 16px; }
+.student-avatar { flex: 0 0 auto; display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: #fee2e2; color: #991b1b; font-weight: 800; }
+.student-info { min-width: 0; flex: 1; }
+.student-info h2 { margin-bottom: 4px; }
+.student-info p { margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.student-meta { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 11px; }
+.student-meta span { padding: 5px 8px; border-radius: 7px; background: #f1f5f9; color: #475569; font-size: 12px; }
+.empty-state { text-align: center; padding-top: 40px; padding-bottom: 40px; }
 .calendar-card { overflow: hidden; }
 .calendar-card .fc { --fc-border-color: var(--border); --fc-button-bg-color: #151b2b; --fc-button-border-color: #151b2b; --fc-button-hover-bg-color: #293044; }
 .calendar-card .fc-toolbar-title { font-size: 20px; }
@@ -90,8 +99,8 @@ h1 { margin: 0 0 10px; font-size: 30px; line-height: 1.2; }
 .calendar-card .is-pending { opacity: .65; }
 
 @media (max-width: 800px) {
-  .app-shell { width: 100%; max-width: 100vw; grid-template-columns: minmax(0, 1fr); overflow-x: hidden; }
-  .sidebar { position: sticky; z-index: 30; top: 0; width: 100%; max-width: 100vw; padding: 14px 16px 10px; overflow: hidden; box-shadow: 0 8px 24px rgba(15,23,42,.16); }
+  .app-shell { width: 100%; max-width: 100vw; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); align-items: start; overflow-x: hidden; }
+  .sidebar { position: sticky; z-index: 30; top: 0; align-self: start; width: 100%; max-width: 100vw; padding: 14px 16px 10px; overflow: hidden; box-shadow: 0 8px 24px rgba(15,23,42,.16); }
   .brand { max-width: calc(100% - 132px); margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 16px; }
   .sidebar-role { max-width: calc(100% - 132px); margin: 4px 0 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 10px; }
   .notification { position: absolute; top: 12px; right: 14px; width: 116px; margin: 0; }
