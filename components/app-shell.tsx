@@ -31,6 +31,7 @@ export function AppShell({ children, orgSlug, role, organizationName, canSelfBoo
     <div className="app-shell">
       <aside className="sidebar">
         <Link className="brand" href={`/${orgSlug}/${role}/dashboard`}>日本語 {organizationName}</Link>
+        <p className="sidebar-role">Login sebagai {role === "murid" ? "murid" : role}</p>
         <nav className="nav" aria-label="Navigasi utama">
           {navigation[role].filter((item) => !item.requiresSelfBook || canSelfBook).map((item) => <Link key={item.path} href={`/${orgSlug}/${role}/${item.path}`}>{item.label}</Link>)}
           <form action={logout}><button className="button" type="submit">Keluar</button></form>

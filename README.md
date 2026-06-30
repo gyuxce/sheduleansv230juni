@@ -38,3 +38,10 @@ Detail keputusan teknis tersedia di [ARSITEKTUR-SAAS.md](./ARSITEKTUR-SAAS.md).
 - Input booking manual untuk sensei yang memiliki izin.
 - Blok jadwal eksternal sensei.
 - RLS, audit log, notifikasi, optimistic locking, dan pencegahan overlap.
+
+## Undangan sensei dan murid
+
+Fitur undangan memakai Supabase Admin API hanya di server. Tambahkan
+`SUPABASE_SERVICE_ROLE_KEY` ke environment Vercel tanpa awalan `NEXT_PUBLIC_`.
+Setelah menambahkan environment variable, lakukan redeploy. Jangan pernah
+memasukkan service-role key ke source code atau mengirimkannya ke browser.
