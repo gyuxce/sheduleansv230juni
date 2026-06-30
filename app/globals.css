@@ -92,6 +92,23 @@ h1 { margin: 0 0 10px; font-size: 30px; line-height: 1.2; }
 .student-meta { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 11px; }
 .student-meta span { padding: 5px 8px; border-radius: 7px; background: #f1f5f9; color: #475569; font-size: 12px; }
 .empty-state { text-align: center; padding-top: 40px; padding-bottom: 40px; }
+.student-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.next-class-card { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.next-class-card .eyebrow { margin-bottom: 8px; }
+.history-list { display: grid; gap: 13px; }
+.history-card { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 16px; }
+.history-date { display: grid; place-items: center; min-width: 64px; padding: 9px; border-radius: 10px; background: #f1f5f9; }
+.history-date strong { font-size: 14px; }
+.history-date span { margin-top: 4px; color: var(--muted); font-size: 12px; }
+.history-info { min-width: 0; }
+.history-info h2 { margin-bottom: 4px; }
+.history-info p { margin: 0; }
+.history-notes { margin-top: 8px !important; color: #475569; font-size: 13px; }
+.class-status { padding: 6px 9px; border-radius: 999px; font-size: 11px; font-weight: 800; white-space: nowrap; }
+.status-pending_confirmation { background: #fef9c3; color: #854d0e; }
+.status-booked { background: #fee2e2; color: #991b1b; }
+.status-completed { background: #dcfce7; color: #166534; }
+.status-cancelled { background: #e5e7eb; color: #4b5563; }
 .calendar-card { overflow: hidden; }
 .calendar-card .fc { --fc-border-color: var(--border); --fc-button-bg-color: #151b2b; --fc-button-border-color: #151b2b; --fc-button-hover-bg-color: #293044; }
 .calendar-card .fc-toolbar-title { font-size: 20px; }
@@ -100,7 +117,7 @@ h1 { margin: 0 0 10px; font-size: 30px; line-height: 1.2; }
 
 @media (max-width: 800px) {
   .app-shell { width: 100%; max-width: 100vw; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); align-items: start; overflow-x: hidden; }
-  .sidebar { position: sticky; z-index: 30; top: 0; align-self: start; width: 100%; max-width: 100vw; padding: 14px 16px 10px; overflow: hidden; box-shadow: 0 8px 24px rgba(15,23,42,.16); }
+  .sidebar { position: sticky; z-index: 30; top: 0; align-self: start; width: 100%; max-width: 100vw; min-height: 0; height: auto; padding: 14px 16px 10px; overflow: visible; box-shadow: 0 8px 24px rgba(15,23,42,.16); }
   .brand { max-width: calc(100% - 132px); margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 16px; }
   .sidebar-role { max-width: calc(100% - 132px); margin: 4px 0 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 10px; }
   .notification { position: absolute; top: 12px; right: 14px; width: 116px; margin: 0; }
@@ -117,6 +134,7 @@ h1 { margin: 0 0 10px; font-size: 30px; line-height: 1.2; }
   .page-header > .button { width: 100%; text-align: center; }
   .grid { grid-template-columns: 1fr; }
   .stats-grid { width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .student-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .two-columns { grid-template-columns: 1fr; }
   .booking-row { align-items: stretch; flex-direction: column; }
   .booking-row .actions { flex-wrap: wrap; }
@@ -135,6 +153,10 @@ h1 { margin: 0 0 10px; font-size: 30px; line-height: 1.2; }
   .section-heading { min-width: 0; max-width: 100%; }
   .utilization-card p,
   .utilization-row { overflow-wrap: anywhere; }
+  .next-class-card { align-items: stretch; flex-direction: column; }
+  .next-class-card > .button { text-align: center; }
+  .history-card { grid-template-columns: auto minmax(0, 1fr); align-items: start; }
+  .class-status { grid-column: 2; justify-self: start; }
 }
 
 @media (max-width: 480px) {
@@ -146,6 +168,7 @@ h1 { margin: 0 0 10px; font-size: 30px; line-height: 1.2; }
   .stats-grid { gap: 10px; }
   .stat-card { padding: 15px; }
   .stat-card strong { font-size: 27px; }
+  .student-stats { grid-template-columns: 1fr; }
   .actions { align-items: stretch; flex-direction: column; }
   .actions .error { width: 100%; }
   .calendar-card { padding: 8px; }
