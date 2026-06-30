@@ -25,6 +25,7 @@ h1 { margin: 0 0 10px; font-size: 30px; line-height: 1.2; }
 .field { display: grid; gap: 7px; font-size: 14px; font-weight: 600; }
 .field input { width: 100%; border: 1px solid var(--border); border-radius: 10px; padding: 11px 12px; outline: none; background: #fff; }
 .field input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px var(--ring); }
+.field-help { color: var(--muted); font-size: 12px; font-weight: 400; line-height: 1.5; }
 .button { border: 0; border-radius: 10px; padding: 12px 16px; background: var(--primary); color: #fff; cursor: pointer; font-weight: 700; }
 .button:hover { background: var(--primary-hover); }
 .button:disabled { opacity: .6; cursor: wait; }
