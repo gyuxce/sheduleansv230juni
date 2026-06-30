@@ -38,6 +38,7 @@ Detail keputusan teknis tersedia di [ARSITEKTUR-SAAS.md](./ARSITEKTUR-SAAS.md).
 - Input booking manual untuk sensei yang memiliki izin.
 - Blok jadwal eksternal sensei.
 - RLS, audit log, notifikasi, optimistic locking, dan pencegahan overlap.
+- Notification bell realtime dan dashboard statistik/utilisasi admin.
 
 ## Pembuatan akun sensei dan murid
 

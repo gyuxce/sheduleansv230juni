@@ -5,7 +5,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import idLocale from "@fullcalendar/core/locales/id";
-import { useEffect, useMemo, useState, useTransition } from "react";
+import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/browser";
 import type { CalendarClass, ClassStatus } from "@/lib/types/classes";
@@ -21,6 +21,7 @@ const colors: Record<ClassStatus, string> = {
 
 export function ClassCalendar({ classes, organizationId, canBook }: { classes: CalendarClass[]; organizationId: string; canBook: boolean }) {
   const router = useRouter();
+  const calendarRef = useRef<FullCalendar>(null);
   const [message, setMessage] = useState<string>();
   const [pending, startTransition] = useTransition();
   const events = useMemo(() => classes.map((item) => ({
@@ -41,10 +42,21 @@ export function ClassCalendar({ classes, organizationId, canBook }: { classes: C
     return () => { void supabase.removeChannel(channel); };
   }, [organizationId, router]);
 
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 700px)");
+    const applyResponsiveView = () => {
+      calendarRef.current?.getApi().changeView(media.matches ? "timeGridDay" : "timeGridWeek");
+    };
+    applyResponsiveView();
+    media.addEventListener("change", applyResponsiveView);
+    return () => media.removeEventListener("change", applyResponsiveView);
+  }, []);
+
   return (
     <section className="card calendar-card">
       {message ? <p className={message.startsWith("Gagal") ? "error" : "notice"}>{message}</p> : null}
       <FullCalendar
+        ref={calendarRef}
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
         initialView="timeGridWeek"
         headerToolbar={{ left: "prev,next today", center: "title", right: "dayGridMonth,timeGridWeek,timeGridDay" }}
