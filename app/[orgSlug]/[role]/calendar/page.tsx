@@ -24,5 +24,28 @@ export default async function CalendarPage({ params }: { params: Promise<{ orgSl
     .order("starts_at");
   if (error) throw new Error(`Gagal mengambil kalender: ${error.message}`);
 
-  return <><header className="page-header"><div><h1>Kalender Kelas</h1><p className="muted">Klik slot hijau untuk membuat booking.</p></div></header><ClassCalendar classes={(data ?? []) as CalendarClass[]} organizationId={membership.organization_id} canBook={role === "murid"} /></>;
+  const { data: busyBlocks, error: busyError } = await supabase.from("sensei_external_busy")
+    .select("id,sensei_id,starts_at,ends_at,source,notes")
+    .eq("organization_id", membership.organization_id)
+    .gte("ends_at", from.toISOString())
+    .lt("starts_at", to.toISOString())
+    .order("starts_at");
+  if (busyError) throw new Error(`Gagal mengambil blok jadwal: ${busyError.message}`);
+
+  const externalBusyEvents: CalendarClass[] = (busyBlocks ?? []).map((block) => ({
+    id: `external-busy:${block.id}`,
+    sensei_id: block.sensei_id,
+    student_id: null,
+    starts_at: block.starts_at,
+    ends_at: block.ends_at,
+    level: null,
+    status: "cancelled",
+    notes: block.notes,
+    meeting_url: null,
+    version: 1,
+    event_kind: "external_busy",
+    source_label: block.source,
+  }));
+
+  return <><header className="page-header"><div><h1>Kalender Kelas</h1><p className="muted">Hijau: tersedia · kuning: menunggu · merah: booked · abu-abu: tidak tersedia.</p></div></header><ClassCalendar classes={[...((data ?? []) as CalendarClass[]), ...externalBusyEvents]} organizationId={membership.organization_id} canBook={role === "murid"} /></>;
 }

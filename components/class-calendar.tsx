@@ -26,7 +26,9 @@ export function ClassCalendar({ classes, organizationId, canBook }: { classes: C
   const [pending, startTransition] = useTransition();
   const events = useMemo(() => classes.map((item) => ({
     id: item.id,
-    title: item.status === "available" ? "Slot tersedia" : item.status.replaceAll("_", " "),
+    title: item.event_kind === "external_busy"
+      ? `Tidak tersedia${item.source_label ? ` · ${item.source_label}` : ""}`
+      : item.status === "available" ? "Slot tersedia" : item.status.replaceAll("_", " "),
     start: item.starts_at,
     end: item.ends_at,
     backgroundColor: colors[item.status],
@@ -38,6 +40,7 @@ export function ClassCalendar({ classes, organizationId, canBook }: { classes: C
     const supabase = createClient();
     const channel = supabase.channel(`classes:${organizationId}`)
       .on("postgres_changes", { event: "*", schema: "public", table: "classes", filter: `organization_id=eq.${organizationId}` }, () => router.refresh())
+      .on("postgres_changes", { event: "*", schema: "public", table: "sensei_external_busy", filter: `organization_id=eq.${organizationId}` }, () => router.refresh())
       .subscribe();
     return () => { void supabase.removeChannel(channel); };
   }, [organizationId, router]);

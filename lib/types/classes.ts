@@ -11,4 +11,6 @@ export type CalendarClass = {
   notes: string | null;
   meeting_url: string | null;
   version: number;
+  event_kind?: "class" | "external_busy";
+  source_label?: string;
 };
