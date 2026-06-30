@@ -32,6 +32,7 @@ h1 { margin: 0 0 10px; font-size: 30px; line-height: 1.2; }
 .button-secondary { background: #475569; }
 .error { padding: 10px 12px; border-radius: 10px; background: #fef2f2; color: #991b1b; font-size: 14px; }
 .notice { padding: 10px 12px; border-radius: 10px; background: #ecfdf5; color: #166534; font-size: 14px; }
+.warning { display: grid; gap: 4px; margin-bottom: 18px; padding: 12px 14px; border: 1px solid #fed7aa; border-radius: 10px; background: #fff7ed; color: #9a3412; font-size: 14px; }
 
 .app-shell { min-height: 100vh; display: grid; grid-template-columns: 250px 1fr; }
 .sidebar { padding: 24px; background: #151b2b; color: #f8fafc; }
