@@ -77,12 +77,27 @@ h1 { margin: 0 0 10px; font-size: 30px; line-height: 1.2; }
 .field select { width: 100%; border: 1px solid var(--border); border-radius: 10px; padding: 11px 12px; background: #fff; }
 .list { display: grid; gap: 14px; }
 .booking-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.booking-meta { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px; }
+.booking-meta span { padding: 5px 8px; border-radius: 7px; background: #f1f5f9; color: #475569; font-size: 12px; }
 .actions { display: flex; align-items: center; gap: 8px; }
 .checkbox { display: flex; align-items: center; gap: 9px; color: var(--muted); font-size: 14px; }
 .member-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--border); }
 .member-row:last-child { border-bottom: 0; }
 .member-row p { margin: 5px 0 0; }
 .status-pill { padding: 5px 9px; border-radius: 999px; background: #ecfdf5; color: #166534; font-size: 12px; font-weight: 700; }
+.member-status-suspended { background: #e5e7eb; color: #4b5563; }
+.member-row-admin { align-items: flex-start; flex-direction: column; }
+.member-identity { width: 100%; }
+.member-identity .status-pill { display: inline-flex; margin-top: 8px; }
+.member-actions { width: 100%; display: grid; gap: 8px; }
+.member-action-buttons { display: flex; flex-wrap: wrap; gap: 7px; }
+.small-button { border: 1px solid var(--border); border-radius: 7px; padding: 7px 9px; background: #fff; color: #334155; cursor: pointer; font-size: 12px; font-weight: 700; }
+.danger-text { color: #b91c1c; border-color: #fecaca; }
+.success-text { color: #166534; border-color: #bbf7d0; }
+.password-reset { display: flex; gap: 7px; }
+.password-reset input { min-width: 0; flex: 1; border: 1px solid var(--border); border-radius: 7px; padding: 8px 9px; }
+.inline-error { color: #b91c1c; }
+.inline-success { color: #166534; }
 .student-list { display: grid; gap: 14px; }
 .student-card { display: flex; align-items: center; gap: 16px; }
 .student-avatar { flex: 0 0 auto; display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: #fee2e2; color: #991b1b; font-weight: 800; }
@@ -117,6 +132,13 @@ h1 { margin: 0 0 10px; font-size: 30px; line-height: 1.2; }
 .danger-button { flex: 0 0 auto; border: 1px solid #fecaca; border-radius: 8px; padding: 8px 10px; background: #fff; color: #b91c1c; cursor: pointer; font-weight: 700; }
 .danger-button:hover { background: #fef2f2; }
 .danger-button:disabled { opacity: .55; cursor: wait; }
+.activity-table { padding-top: 8px; padding-bottom: 8px; }
+.activity-list { display: grid; }
+.activity-row { position: relative; display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 12px; padding: 15px 0; border-bottom: 1px solid var(--border); }
+.activity-row:last-child { border-bottom: 0; }
+.activity-dot { width: 10px; height: 10px; margin-top: 5px; border: 2px solid #fecaca; border-radius: 50%; background: var(--primary); }
+.activity-row p { margin: 5px 0; color: var(--muted); font-size: 13px; }
+.activity-row small { color: #94a3b8; font-family: monospace; }
 .calendar-card { overflow: hidden; }
 .calendar-card .fc { --fc-border-color: var(--border); --fc-button-bg-color: #151b2b; --fc-button-border-color: #151b2b; --fc-button-hover-bg-color: #293044; }
 .calendar-card .fc-toolbar-title { font-size: 20px; }
