@@ -13,4 +13,7 @@ export type CalendarClass = {
   version: number;
   event_kind?: "class" | "external_busy";
   source_label?: string;
+  sensei_name?: string;
+  student_name?: string;
+  source?: string;
 };
