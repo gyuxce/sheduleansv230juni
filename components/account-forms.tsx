@@ -1,0 +1,14 @@
+"use client";
+
+import { useState, useTransition } from "react";
+import { changeOwnPassword, updateOwnProfile } from "@/app/actions/account";
+import type { Role } from "@/lib/types/auth";
+
+export function AccountForms({ orgSlug, role, profile }: { orgSlug: string; role: Role; profile: { full_name: string; email: string | null; phone: string | null } }) {
+  const [profilePending, startProfileTransition] = useTransition();
+  const [passwordPending, startPasswordTransition] = useTransition();
+  const [profileFeedback, setProfileFeedback] = useState<{ error?: string; message?: string }>({});
+  const [passwordFeedback, setPasswordFeedback] = useState<{ error?: string; message?: string }>({});
+
+  return <div className="grid two-columns account-grid"><section className="card"><h2>Profil</h2><form className="form" onSubmit={(event) => { event.preventDefault(); const form = new FormData(event.currentTarget); startProfileTransition(async () => setProfileFeedback(await updateOwnProfile({ orgSlug, role, fullName: String(form.get("fullName") ?? ""), phone: String(form.get("phone") ?? "") }))); }}>{profileFeedback.error ? <div className="error">{profileFeedback.error}</div> : null}{profileFeedback.message ? <div className="notice">{profileFeedback.message}</div> : null}<label className="field">Nama lengkap<input defaultValue={profile.full_name} name="fullName" required /></label><label className="field">Email<input disabled value={profile.email ?? ""} /></label><label className="field">Nomor telepon<input defaultValue={profile.phone ?? ""} name="phone" /></label><button className="button" disabled={profilePending}>{profilePending ? "Menyimpan..." : "Simpan profil"}</button></form></section><section className="card"><h2>Ganti password</h2><p className="muted">Gunakan minimal 8 karakter dan jangan memakai password sementara lagi.</p><form className="form" onSubmit={(event) => { event.preventDefault(); const formElement = event.currentTarget; const form = new FormData(formElement); startPasswordTransition(async () => { const result = await changeOwnPassword({ orgSlug, role, password: String(form.get("password") ?? ""), confirmation: String(form.get("confirmation") ?? "") }); setPasswordFeedback(result); if (!result.error) formElement.reset(); }); }}>{passwordFeedback.error ? <div className="error">{passwordFeedback.error}</div> : null}{passwordFeedback.message ? <div className="notice">{passwordFeedback.message}</div> : null}<label className="field">Password baru<input autoComplete="new-password" minLength={8} name="password" required type="password" /></label><label className="field">Ulangi password<input autoComplete="new-password" minLength={8} name="confirmation" required type="password" /></label><button className="button" disabled={passwordPending}>{passwordPending ? "Mengganti..." : "Ganti password"}</button></form></section></div>;
+}

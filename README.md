@@ -26,6 +26,17 @@ npm run lint
 npm run build
 ```
 
+Integration test untuk alur booking dapat dijalankan pada Supabase lokal atau
+project staging yang terisolasi:
+
+```bash
+npm run test:integration
+```
+
+Test membuat data sementara lalu membersihkannya. Target remote hanya diizinkan
+jika `ALLOW_REMOTE_INTEGRATION_TESTS=true`; jangan arahkan variabel `TEST_*` ke
+production.
+
 Detail keputusan teknis tersedia di [ARSITEKTUR-SAAS.md](./ARSITEKTUR-SAAS.md).
 
 ## Modul yang tersedia

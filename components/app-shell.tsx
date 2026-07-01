@@ -8,16 +8,16 @@ const navigation: Record<Role, { label: string; path: string; requiresSelfBook?:
   admin: [
     { label: "Dashboard", path: "dashboard" }, { label: "Kalender", path: "calendar" },
     { label: "Approval Booking", path: "bookings" }, { label: "Sensei", path: "senseis" },
-    { label: "Murid", path: "students" }, { label: "Activity Log", path: "activity" },
+    { label: "Murid", path: "students" }, { label: "Activity Log", path: "activity" }, { label: "Akun Saya", path: "account" },
   ],
   sensei: [
     { label: "Dashboard", path: "dashboard" }, { label: "Kalender Saya", path: "calendar" },
     { label: "Ketersediaan", path: "availability" }, { label: "Input Booking", path: "direct-booking", requiresSelfBook: true },
-    { label: "Jadwal Eksternal", path: "external-busy" }, { label: "Murid Saya", path: "students" },
+    { label: "Jadwal Eksternal", path: "external-busy" }, { label: "Murid Saya", path: "students" }, { label: "Akun Saya", path: "account" },
   ],
   murid: [
     { label: "Dashboard", path: "dashboard" }, { label: "Booking Kelas", path: "calendar" },
-    { label: "Riwayat Kelas", path: "history" },
+    { label: "Riwayat Kelas", path: "history" }, { label: "Akun Saya", path: "account" },
   ],
 };
 

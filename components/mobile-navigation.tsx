@@ -10,6 +10,7 @@ export type NavigationItem = { label: string; path: string };
 const icons: Record<string, string> = {
   dashboard: "⌂", calendar: "▦", bookings: "✓", availability: "+", history: "↺",
   senseis: "先", students: "人", activity: "≡", "direct-booking": "+", "external-busy": "×",
+  account: "○",
 };
 
 export function MobileNavigation({ orgSlug, role, items }: { orgSlug: string; role: string; items: NavigationItem[] }) {
