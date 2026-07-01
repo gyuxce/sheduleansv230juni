@@ -10,3 +10,11 @@ export async function createExternalBusy(input: { senseiId: string; startsAt: st
   revalidatePath("/", "layout");
   return { message: (data as { message?: string } | null)?.message ?? "Jadwal eksternal ditambahkan" };
 }
+
+export async function deleteExternalBusy(busyId: string) {
+  const supabase = await createClient();
+  const { data, error } = await supabase.rpc("delete_external_busy", { p_busy_id: busyId });
+  if (error) return { error: error.message };
+  revalidatePath("/", "layout");
+  return { message: (data as { message?: string } | null)?.message ?? "Blok jadwal berhasil dihapus" };
+}
